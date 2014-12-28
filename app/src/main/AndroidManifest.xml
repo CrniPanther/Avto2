@@ -16,6 +16,51 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".IskanjeVin"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.ISKANJEVIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Oglasi"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.OGLASI" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Prijava"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.PRIJAVA" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Iskanje_oglasa"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.ISKANJEOGL" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".OddajaOglasa"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.ODDAJAOGL" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

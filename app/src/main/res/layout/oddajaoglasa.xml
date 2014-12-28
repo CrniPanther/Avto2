@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nov oglas"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="35dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="36dp"
+        android:textSize="30dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/NaslovOglasa"
+        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_marginTop="33dp"
+        android:text="Naslov oglasa" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/OpisOglasa"
+        android:layout_below="@+id/NaslovOglasa"
+        android:layout_alignLeft="@+id/NaslovOglasa"
+        android:layout_alignStart="@+id/NaslovOglasa"
+        android:layout_marginTop="36dp"
+        android:text="Opis" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/VIN"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/OpisOglasa"
+        android:layout_alignStart="@+id/OpisOglasa"
+        android:text="VIN številka" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Oddaj oglas"
+        android:id="@+id/OddajOgl"
+        android:layout_marginTop="89dp"
+        android:layout_below="@+id/VIN"
+        android:layout_toRightOf="@+id/VIN"
+        android:layout_toEndOf="@+id/VIN" />
+
+</RelativeLayout>

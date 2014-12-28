@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kritične točke"
+        android:id="@+id/KriticneTocke"
+        android:layout_marginTop="115dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zgodovina prodaje"
+        android:id="@+id/ZgodovinaProdaje"
+        android:layout_above="@+id/Komentarji"
+        android:layout_alignLeft="@+id/KriticneTocke"
+        android:layout_alignStart="@+id/KriticneTocke"
+        android:layout_marginBottom="63dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Komentarji"
+        android:id="@+id/Komentarji"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/ZgodovinaProdaje"
+        android:layout_alignStart="@+id/ZgodovinaProdaje" />
+</RelativeLayout>
