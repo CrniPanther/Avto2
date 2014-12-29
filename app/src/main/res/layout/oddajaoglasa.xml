@@ -5,7 +5,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nov oglas"
+        android:text="@string/nov_oglas"
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -23,7 +23,7 @@
         android:layout_alignLeft="@+id/textView2"
         android:layout_alignStart="@+id/textView2"
         android:layout_marginTop="33dp"
-        android:text="Naslov oglasa" />
+        android:hint="@string/naslov_oglasa" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
         android:layout_alignLeft="@+id/NaslovOglasa"
         android:layout_alignStart="@+id/NaslovOglasa"
         android:layout_marginTop="36dp"
-        android:text="Opis" />
+        android:hint="@string/opis" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -42,12 +42,12 @@
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/OpisOglasa"
         android:layout_alignStart="@+id/OpisOglasa"
-        android:text="VIN številka" />
+        android:hint="@string/VIN" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Oddaj oglas"
+        android:text="@string/oddaj"
         android:id="@+id/OddajOgl"
         android:layout_marginTop="89dp"
         android:layout_below="@+id/VIN"

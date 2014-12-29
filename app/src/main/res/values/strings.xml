@@ -4,5 +4,9 @@
     <string name="app_name">Avto</string>
     <string name="hello_world">Meni dela by Mondo</string>
     <string name="action_settings">Settings</string>
-
+    <string name="nov_oglas">Nov oglas</string>
+    <string name="naslov_oglasa">Naslov oglasa</string>
+    <string name="opis">Opis</string>
+    <string name="VIN">VIN številka</string>
+    <string name="oddaj">Oddaj oglas</string>
 </resources>
