@@ -9,10 +9,11 @@
         android:text="Up.Ime"
         android:id="@+id/test"
         android:textSize="30dp"
-        android:layout_marginBottom="108dp"
-        android:layout_above="@+id/Prijava"
-        android:layout_toLeftOf="@+id/Prijava"
-        android:layout_toStartOf="@+id/Prijava" />
+
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/UpIme"
+        android:layout_toStartOf="@+id/UpIme"
+        android:layout_marginTop="127dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,10 +21,9 @@
         android:text="Geslo"
         android:id="@+id/test2"
         android:textSize="30dp"
-        android:layout_above="@+id/Prijava"
+        android:layout_alignTop="@+id/Geslo"
         android:layout_alignLeft="@+id/test"
-        android:layout_alignStart="@+id/test"
-        android:layout_marginBottom="44dp" />
+        android:layout_alignStart="@+id/test" />
 
     <Button
         android:layout_width="wrap_content"
@@ -31,27 +31,26 @@
         android:text="Prijava"
         android:id="@+id/Prijava"
         android:width="120dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="227dp" />
+        android:layout_marginTop="52dp"
+        android:layout_below="@+id/Geslo"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/UpIme"
+        android:width="170dp"
         android:layout_alignTop="@+id/test"
         android:layout_alignLeft="@+id/Prijava"
-        android:layout_alignStart="@+id/Prijava"
-        android:layout_marginLeft="36dp"
-        android:layout_marginStart="36dp"
-        android:width="170dp"/>
+        android:layout_alignStart="@+id/Prijava" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Geslo"
-        android:layout_alignBottom="@+id/test2"
+        android:width="170dp"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/UpIme"
         android:layout_alignLeft="@+id/UpIme"
-        android:layout_alignStart="@+id/UpIme"
-        android:width="170dp"/>
+        android:layout_alignStart="@+id/UpIme" />
 </RelativeLayout>
