@@ -7,26 +7,27 @@
         android:layout_height="wrap_content"
         android:text="Išči oglas"
         android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="69dp"
+        android:layout_marginTop="106dp"
         android:textSize="30dp"
-        />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/VpisiIskaniOglas"
         android:width="220dp"
-        android:layout_above="@+id/IskanjeOglasaGumb"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="43dp" />
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Išči"
         android:id="@+id/IskanjeOglasaGumb"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/VpisiIskaniOglas"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp"
+        android:width="120dp"
+        />
 </RelativeLayout>
