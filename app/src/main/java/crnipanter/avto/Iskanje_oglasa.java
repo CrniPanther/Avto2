@@ -1,11 +1,23 @@
 package crnipanter.avto;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -13,21 +25,6 @@ import android.widget.EditText;
  */
 public class Iskanje_oglasa extends Activity {
 
-    EditText oglas;
-    Button iskanje;
-    private final String dbName = "Android";
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.iskanje_oglasa);
-        oglas= (EditText) findViewById(R.id.VpisiIskaniOglas);
-        iskanje =(Button) findViewById(R.id.IskanjeOglasaGumb);
-        final SQLiteDatabase sampleDB = null;
-        iskanje.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
-    }
-}
+
+        }

@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="crnipanter.avto" >
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -57,6 +61,36 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.ODDAJAOGL" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".UspesnoOddan"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.USPESNOODDAN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".OgledVin"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.OGLEDVIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".NotFound"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.NOTFOUND" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

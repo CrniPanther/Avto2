@@ -1,33 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="NASLOV"
+        android:id="@+id/Naslov"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="25dp"
+
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/Opis"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="25dp"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/izpisVIN"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="25dp"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:text="Kritične točke"
         android:id="@+id/KriticneTocke"
-        android:layout_marginTop="115dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_margin="25dp"
+
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Zgodovina prodaje"
         android:id="@+id/ZgodovinaProdaje"
-        android:layout_above="@+id/Komentarji"
-        android:layout_alignLeft="@+id/KriticneTocke"
-        android:layout_alignStart="@+id/KriticneTocke"
-        android:layout_marginBottom="63dp" />
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="25dp"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Komentarji"
         android:id="@+id/Komentarji"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/ZgodovinaProdaje"
-        android:layout_alignStart="@+id/ZgodovinaProdaje" />
-</RelativeLayout>
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="25dp"
+        />
+</LinearLayout>
