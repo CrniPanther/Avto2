@@ -37,7 +37,7 @@ public class IskanjeVin extends Activity {
 
     JSONParser jsonParser = new JSONParser();
 
-    private static final String url = "http://192.168.64.100/vin.php";
+    private static final String url = "http://avto.host56.com/vin.php";
 
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_AVTO = "avto";
@@ -81,7 +81,7 @@ public class IskanjeVin extends Activity {
 
             JSONObject json = jsonParser.makeHttpRequest(url,"GET",params);
 
-           // Log.d("Response ", json.toString());
+            Log.d("Response ", json.toString());
 
             try{
                 int success = json.getInt(TAG_SUCCESS);

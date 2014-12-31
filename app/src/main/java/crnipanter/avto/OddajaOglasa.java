@@ -36,7 +36,7 @@ public class OddajaOglasa extends Activity{
   JSONParser jsonParser = new JSONParser();
 
     //url do skripte
-private static String url = "http://192.168.64.100/insert_car.php";
+private static String url = "http://avto.host56.com/insert_car.php";
 
     //JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -101,7 +101,7 @@ private static String url = "http://192.168.64.100/insert_car.php";
                 int success = json.getInt(TAG_SUCCESS);
 
                 if(success == 1){
-                    Intent i = new Intent("android.intent.action.NOTFOUND");
+                    Intent i = new Intent("android.intent.action.USPESNOODDAN");
                     startActivity(i);
                   finish();
                 } else {
