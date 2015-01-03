@@ -37,13 +37,15 @@ public class IskanjeVin extends Activity {
 
     JSONParser jsonParser = new JSONParser();
 
-    private static final String url = "http://avto.host56.com/vin.php";
+    private static final String url = "http://avto.host56.com/vin_novo.php";
 
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_AVTO = "avto";
-    private static final String TAG_NASLOV = "naslov";
-    private static final String TAG_OPIS = "opis";
+    private static final String TAG_ZNAMKA = "znamka";
+    private static final String TAG_MODEL = "model";
     private static final String TAG_VIN = "vin";
+    private static final String TAG_LETNIK = "letnik";
+    private static final String TAG_PRENOVA = "prenova";
 
     JSONArray avto = null;
 
@@ -93,14 +95,18 @@ public class IskanjeVin extends Activity {
                     JSONObject c = avto.getJSONObject(0);
 
 
-                    String naslov = c.getString(TAG_NASLOV);
-                    String opis = c.getString(TAG_OPIS);
+                    String znamka = c.getString(TAG_ZNAMKA);
+                    String model = c.getString(TAG_MODEL);
                     String vin = c.getString(TAG_VIN);
+                    String letnik = c.getString(TAG_LETNIK);
+                    String prenova = c.getString(TAG_PRENOVA);
 
                     Intent i = new Intent("android.intent.action.OGLEDVIN");
-                    i.putExtra(TAG_NASLOV, naslov);
-                    i.putExtra(TAG_OPIS, opis);
+                    i.putExtra(TAG_ZNAMKA, znamka);
+                    i.putExtra(TAG_MODEL, model);
                     i.putExtra(TAG_VIN, vin);
+                    i.putExtra(TAG_LETNIK, letnik);
+                    i.putExtra(TAG_PRENOVA, prenova);
                     startActivity(i);
                     finish();
 

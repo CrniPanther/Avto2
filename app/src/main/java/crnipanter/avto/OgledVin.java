@@ -13,14 +13,17 @@ import android.widget.TextView;
 public class OgledVin extends Activity {
 
     private static final String TAG_VIN = "vin";
-    private static final String TAG_OPIS = "opis";
-    private static final String TAG_NASLOV = "naslov";
+    private static final String TAG_MODEL = "model";
+    private static final String TAG_ZNAMKA = "znamka";
+    private static final String TAG_LETNIK = "letnik";
+    private static final String TAG_PRENOVA = "prenova";
     TextView Naslov;
     TextView Opis;
     TextView izpisVIN;
     TextView KriticneTocke;
     TextView ZgodovinaProdaje;
     TextView Komentarji;
+    TextView Letnik;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,21 +35,28 @@ public class OgledVin extends Activity {
         KriticneTocke = (TextView) findViewById(R.id.KriticneTocke);
         ZgodovinaProdaje = (TextView) findViewById(R.id.ZgodovinaProdaje);
         Komentarji = (TextView) findViewById(R.id.Komentarji);
+        Letnik = (TextView) findViewById(R.id.ogledLetnik);
 
         Intent i = getIntent();
 
 
-        String passedArg = i.getStringExtra(TAG_NASLOV);
+        String passedArg = i.getStringExtra(TAG_ZNAMKA);
         Naslov.setText(passedArg);
 
         passedArg = i.getStringExtra(TAG_VIN);
         izpisVIN.setText(passedArg);
 
-        passedArg = i.getStringExtra(TAG_NASLOV);
-        Naslov.setText(passedArg);
 
-        passedArg = i.getStringExtra(TAG_OPIS);
+
+        passedArg = i.getStringExtra(TAG_MODEL);
        Opis.setText(passedArg);
+
+        passedArg = i.getStringExtra(TAG_LETNIK);
+        Letnik.setText(passedArg);
+
+        passedArg = i.getStringExtra(TAG_PRENOVA);
+        KriticneTocke.setText(passedArg);
+
 
 
     }

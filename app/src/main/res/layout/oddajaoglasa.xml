@@ -23,7 +23,7 @@
         android:layout_alignLeft="@+id/textView2"
         android:layout_alignStart="@+id/textView2"
         android:layout_marginTop="33dp"
-        android:hint="@string/naslov_oglasa" />
+        android:hint="Znamka" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
         android:layout_alignLeft="@+id/NaslovOglasa"
         android:layout_alignStart="@+id/NaslovOglasa"
         android:layout_marginTop="36dp"
-        android:hint="@string/opis" />
+        android:hint="Model" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -43,6 +43,16 @@
         android:layout_alignLeft="@+id/OpisOglasa"
         android:layout_alignStart="@+id/OpisOglasa"
         android:hint="@string/VIN" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/letnik"
+        android:hint="Letnik"
+        android:layout_below="@+id/VIN"
+        android:layout_alignRight="@+id/OpisOglasa"
+        android:layout_alignEnd="@+id/OpisOglasa" />
+
 
     <Button
         android:layout_width="wrap_content"

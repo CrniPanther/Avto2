@@ -26,9 +26,8 @@ import java.util.List;
 public class OddajaOglasa extends Activity{
 
     Button oddaj;
-    EditText naslov;
-    EditText opis;
-    EditText vin;
+    EditText znamka,model,vin,letnik;
+
 
     //Progress
     private ProgressDialog pDialog;
@@ -36,7 +35,7 @@ public class OddajaOglasa extends Activity{
   JSONParser jsonParser = new JSONParser();
 
     //url do skripte
-private static String url = "http://avto.host56.com/insert_car.php";
+private static String url = "http://avto.host56.com/insert_car_letnik.php";
 
     //JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -47,9 +46,10 @@ private static String url = "http://avto.host56.com/insert_car.php";
         setContentView(R.layout.oddajaoglasa);
 
         //EditText
-        naslov= (EditText) findViewById(R.id.NaslovOglasa);
-        opis= (EditText) findViewById(R.id.OpisOglasa);
+        znamka= (EditText) findViewById(R.id.NaslovOglasa);
+        model= (EditText) findViewById(R.id.OpisOglasa);
         vin= (EditText) findViewById(R.id.VIN);
+        letnik = (EditText) findViewById(R.id.letnik);
 
         //Create button
         oddaj= (Button) findViewById(R.id.OddajOgl);
@@ -80,19 +80,23 @@ private static String url = "http://avto.host56.com/insert_car.php";
 
         @Override
         protected String doInBackground(String... args) {
-            String insertnaslov = naslov.getText().toString();
-            String insertopis = opis.getText().toString();
+            String insertnaslov = znamka.getText().toString();
+            String insertopis = model.getText().toString();
             String insertVIN = vin.getText().toString();
+            String insertLetnik = letnik.getText().toString();
+
 
             //Building parameters
             List<NameValuePair> params;
             params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("naslov", insertnaslov));
-            params.add(new BasicNameValuePair("opis", insertopis));
+            params.add(new BasicNameValuePair("znamka", insertnaslov));
+            params.add(new BasicNameValuePair("model", insertopis));
             params.add(new BasicNameValuePair("vin", insertVIN));
+            params.add(new BasicNameValuePair("letnik", insertLetnik));
+
 
             //getting JSON object
-            JSONObject json = jsonParser.makeHttpRequest(url,"POST",params);
+            JSONObject json = jsonParser.makeHttpRequest(url,"GET",params);
 
             Log.d("Create response", json.toString());
 
