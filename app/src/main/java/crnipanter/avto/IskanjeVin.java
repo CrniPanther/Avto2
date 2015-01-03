@@ -46,6 +46,16 @@ public class IskanjeVin extends Activity {
     private static final String TAG_VIN = "vin";
     private static final String TAG_LETNIK = "letnik";
     private static final String TAG_PRENOVA = "prenova";
+    private static final String TAG_OKVARE = "okvare";
+    private static final String TAG_POMAN = "pomanjkljivosti";
+    private static final String TAG_KAROSERIJA = "karoserija";
+    private static final String TAG_NOTRANJOST = "notranjost";
+    private static final String TAG_ELEKTRONIKA = "elektronika";
+    private static final String TAG_VPOKLICI = "vpoklici";
+    private static final String TAG_PREDNOSTI = "prednosti";
+    private static final String TAG_SLABOSTI = "slabosti";
+
+
 
     JSONArray avto = null;
 
@@ -100,6 +110,14 @@ public class IskanjeVin extends Activity {
                     String vin = c.getString(TAG_VIN);
                     String letnik = c.getString(TAG_LETNIK);
                     String prenova = c.getString(TAG_PRENOVA);
+                    String elektronika = c.getString(TAG_ELEKTRONIKA);
+                    String okvare = c.getString(TAG_OKVARE);
+                    String pomanjkljivosti = c.getString(TAG_POMAN);
+                    String notranjost = c.getString(TAG_NOTRANJOST);
+                    String karoserija = c.getString(TAG_KAROSERIJA);
+                    String prednosti = c.getString(TAG_PREDNOSTI);
+                    String slabosti = c.getString(TAG_SLABOSTI);
+                    String vpoklici = c.getString(TAG_VPOKLICI);
 
                     Intent i = new Intent("android.intent.action.OGLEDVIN");
                     i.putExtra(TAG_ZNAMKA, znamka);
@@ -107,6 +125,14 @@ public class IskanjeVin extends Activity {
                     i.putExtra(TAG_VIN, vin);
                     i.putExtra(TAG_LETNIK, letnik);
                     i.putExtra(TAG_PRENOVA, prenova);
+                    i.putExtra(TAG_ELEKTRONIKA, elektronika);
+                    i.putExtra(TAG_OKVARE, okvare);
+                    i.putExtra(TAG_POMAN, pomanjkljivosti);
+                    i.putExtra(TAG_NOTRANJOST, notranjost);
+                    i.putExtra(TAG_KAROSERIJA,karoserija);
+                    i.putExtra(TAG_PREDNOSTI,prednosti);
+                    i.putExtra(TAG_SLABOSTI,slabosti);
+                    i.putExtra(TAG_VPOKLICI,vpoklici);
                     startActivity(i);
                     finish();
 

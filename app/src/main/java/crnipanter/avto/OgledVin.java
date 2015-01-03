@@ -17,6 +17,14 @@ public class OgledVin extends Activity {
     private static final String TAG_ZNAMKA = "znamka";
     private static final String TAG_LETNIK = "letnik";
     private static final String TAG_PRENOVA = "prenova";
+    private static final String TAG_OKVARE = "okvare";
+    private static final String TAG_POMAN = "pomanjkljivosti";
+    private static final String TAG_KAROSERIJA = "karoserija";
+    private static final String TAG_NOTRANJOST = "notranjost";
+    private static final String TAG_ELEKTRONIKA = "elektronika";
+    private static final String TAG_VPOKLICI = "vpoklici";
+    private static final String TAG_PREDNOSTI = "prednosti";
+    private static final String TAG_SLABOSTI = "slabosti";
     TextView Naslov;
     TextView Opis;
     TextView izpisVIN;
@@ -54,7 +62,15 @@ public class OgledVin extends Activity {
         passedArg = i.getStringExtra(TAG_LETNIK);
         Letnik.setText(passedArg);
 
-        passedArg = i.getStringExtra(TAG_PRENOVA);
+        passedArg = "Prenova: \n" + i.getStringExtra(TAG_PRENOVA) +
+                    "\nOkvare: " + i.getStringExtra(TAG_OKVARE) +
+                "\nPomanjkljivosti: " + i.getStringExtra(TAG_POMAN) +
+                "\nKaroserija: " + i.getStringExtra(TAG_KAROSERIJA) +
+                "\nNotranjost: " + i.getStringExtra(TAG_NOTRANJOST) +
+                "\nElektronika: " + i.getStringExtra(TAG_ELEKTRONIKA) +
+                "\nVpoklici: " + i.getStringExtra(TAG_VPOKLICI) +
+                "\nPrednosti: " + i.getStringExtra(TAG_PREDNOSTI) +
+                "\nSlabosti: " + i.getStringExtra(TAG_SLABOSTI);
         KriticneTocke.setText(passedArg);
 
 
