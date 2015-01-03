@@ -3,6 +3,7 @@ package crnipanter.avto;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -57,13 +58,13 @@ public class OgledVin extends Activity {
 
 
         passedArg = i.getStringExtra(TAG_MODEL);
-       Opis.setText(passedArg);
+        Opis.setText(passedArg);
 
         passedArg = i.getStringExtra(TAG_LETNIK);
         Letnik.setText(passedArg);
 
         passedArg = "Prenova: \n" + i.getStringExtra(TAG_PRENOVA) +
-                    "\nOkvare: " + i.getStringExtra(TAG_OKVARE) +
+                "\nOkvare: " + i.getStringExtra(TAG_OKVARE) +
                 "\nPomanjkljivosti: " + i.getStringExtra(TAG_POMAN) +
                 "\nKaroserija: " + i.getStringExtra(TAG_KAROSERIJA) +
                 "\nNotranjost: " + i.getStringExtra(TAG_NOTRANJOST) +
@@ -72,6 +73,18 @@ public class OgledVin extends Activity {
                 "\nPrednosti: " + i.getStringExtra(TAG_PREDNOSTI) +
                 "\nSlabosti: " + i.getStringExtra(TAG_SLABOSTI);
         KriticneTocke.setText(passedArg);
+
+        passedArg =
+                "<b><br>Prenova: </b>" + i.getStringExtra(TAG_PRENOVA) +
+                        "<b><br>Okvare: </b>" + i.getStringExtra(TAG_OKVARE) +
+                        "<b><br>Pomanjkljivosti: </b>" + i.getStringExtra(TAG_POMAN) +
+                        "<b><br>Karoserija: </b>" + i.getStringExtra(TAG_KAROSERIJA) +
+                        "<b><br>Notranjost: </b>" + i.getStringExtra(TAG_NOTRANJOST) +
+                        "<b><br>Elektronika: </b>" + i.getStringExtra(TAG_ELEKTRONIKA) +
+                        "<b><br>Vpoklici: </b>" + i.getStringExtra(TAG_VPOKLICI) +
+                        "<b><br>Prednosti: </b>" + i.getStringExtra(TAG_PREDNOSTI) +
+                        "<b><br>Slabosti: </b>" + i.getStringExtra(TAG_SLABOSTI);
+        KriticneTocke.setText(Html.fromHtml(passedArg));
 
 
 

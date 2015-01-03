@@ -73,7 +73,7 @@ public class IskanjeVin extends Activity {
             }
         });
     }
-            class IsciVin extends AsyncTask<String, String, String>{
+    class IsciVin extends AsyncTask<String, String, String>{
 
         protected void onPreExecute(){
             super.onPreExecute();
@@ -151,5 +151,3 @@ public class IskanjeVin extends Activity {
     }
 
 }
-
-
