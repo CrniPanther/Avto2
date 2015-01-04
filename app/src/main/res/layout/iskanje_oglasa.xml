@@ -1,33 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Išči oglas"
         android:id="@+id/textView"
-        android:layout_marginTop="106dp"
         android:textSize="30dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/VpisiIskaniOglas"
-        android:width="220dp"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
+        android:text="Znamka:"
+        android:id="@+id/textZnamka"
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/znamka"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Model:"
+        android:id="@+id/textModel"
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/model"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Letnik:"
+        android:id="@+id/textLetnik"
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/letnik"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <Spinner
+        android:id="@+id/znamka"
+        android:hint="znamka"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:layout_above="@+id/model"
+        android:layout_alignLeft="@+id/model"
+        android:layout_alignStart="@+id/model" />
+
+    <Spinner
+        android:id="@+id/model"
+        android:hint="model"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:layout_above="@+id/letnik"
+        android:layout_alignLeft="@+id/letnik"
+        android:layout_alignStart="@+id/letnik" />
+
+    <Spinner
+        android:id="@+id/letnik"
+        android:hint="letnik"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:layout_marginBottom="78dp"
+        android:layout_above="@+id/IskanjeOglasaGumb"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Išči"
         android:id="@+id/IskanjeOglasaGumb"
-        android:layout_below="@+id/VpisiIskaniOglas"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="33dp"
         android:width="120dp"
-        />
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_marginBottom="85dp" />
 </RelativeLayout>

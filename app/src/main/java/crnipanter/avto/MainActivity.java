@@ -28,8 +28,8 @@ public class MainActivity extends Activity {
         IskanjeVin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent IVIN= new Intent("android.intent.action.ISKANJEVIN");
-                    startActivity(IVIN);
+                Intent IVIN= new Intent("android.intent.action.ISKANJEVIN");
+                startActivity(IVIN);
             }
         });
 
@@ -48,6 +48,8 @@ public class MainActivity extends Activity {
                 startActivity(ogl);
             }
         });
+
+
 
     }
 

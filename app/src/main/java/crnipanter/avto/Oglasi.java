@@ -23,8 +23,8 @@ public class Oglasi extends Activity{
         IskanjeOgl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ogl=new Intent("android.intent.action.ISKANJEOGL");
-                startActivity(ogl);
+                Intent isci=new Intent("android.intent.action.ISKANJEOGL");
+                startActivity(isci);
             }
         });
 
