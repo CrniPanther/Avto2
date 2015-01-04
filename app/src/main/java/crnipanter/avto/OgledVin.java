@@ -33,6 +33,7 @@ public class OgledVin extends Activity {
     TextView ZgodovinaProdaje;
     TextView Komentarji;
     TextView Letnik;
+    TextView PrikazKomentarjev;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class OgledVin extends Activity {
         ZgodovinaProdaje = (TextView) findViewById(R.id.ZgodovinaProdaje);
         Komentarji = (TextView) findViewById(R.id.Komentarji);
         Letnik = (TextView) findViewById(R.id.ogledLetnik);
+        PrikazKomentarjev=(TextView) findViewById(R.id.PrikazKomentarjev);
 
         Intent i = getIntent();
 
@@ -63,16 +65,6 @@ public class OgledVin extends Activity {
         passedArg = i.getStringExtra(TAG_LETNIK);
         Letnik.setText(passedArg);
 
-        passedArg = "Prenova: \n" + i.getStringExtra(TAG_PRENOVA) +
-                "\nOkvare: " + i.getStringExtra(TAG_OKVARE) +
-                "\nPomanjkljivosti: " + i.getStringExtra(TAG_POMAN) +
-                "\nKaroserija: " + i.getStringExtra(TAG_KAROSERIJA) +
-                "\nNotranjost: " + i.getStringExtra(TAG_NOTRANJOST) +
-                "\nElektronika: " + i.getStringExtra(TAG_ELEKTRONIKA) +
-                "\nVpoklici: " + i.getStringExtra(TAG_VPOKLICI) +
-                "\nPrednosti: " + i.getStringExtra(TAG_PREDNOSTI) +
-                "\nSlabosti: " + i.getStringExtra(TAG_SLABOSTI);
-        KriticneTocke.setText(passedArg);
 
         passedArg =
                 "<b><br>Prenova: </b>" + i.getStringExtra(TAG_PRENOVA) +

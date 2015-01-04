@@ -5,7 +5,8 @@
     android:layout_height="fill_parent">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
     <TextView
         android:layout_width="wrap_content"
@@ -70,6 +71,13 @@
         android:layout_gravity="center_horizontal"
         android:layout_margin="25dp"
         />
+
+    <TextView
+        android:layout_width="113dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/PrikazKomentarjev"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.16" />
 </LinearLayout>
 
 </ScrollView>
