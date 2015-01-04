@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -54,6 +55,8 @@ public class IskanjeVin extends Activity {
     private static final String TAG_VPOKLICI = "vpoklici";
     private static final String TAG_PREDNOSTI = "prednosti";
     private static final String TAG_SLABOSTI = "slabosti";
+    private static final String TAG_UPKOMENTAR = "idUporabnik";
+    private static final String TAG_KOMENTAR = "komentar";
 
 
 
@@ -118,6 +121,9 @@ public class IskanjeVin extends Activity {
                     String prednosti = c.getString(TAG_PREDNOSTI);
                     String slabosti = c.getString(TAG_SLABOSTI);
                     String vpoklici = c.getString(TAG_VPOKLICI);
+                    String upKomentar = c.getString(TAG_UPKOMENTAR);
+                    String komentar = c.getString(TAG_KOMENTAR);
+
 
                     Intent i = new Intent("android.intent.action.OGLEDVIN");
                     i.putExtra(TAG_ZNAMKA, znamka);
@@ -133,8 +139,11 @@ public class IskanjeVin extends Activity {
                     i.putExtra(TAG_PREDNOSTI,prednosti);
                     i.putExtra(TAG_SLABOSTI,slabosti);
                     i.putExtra(TAG_VPOKLICI,vpoklici);
-                    startActivity(i);
-                    finish();
+                    i.putExtra(TAG_UPKOMENTAR,upKomentar);
+                    i.putExtra(TAG_KOMENTAR,komentar);
+
+                   startActivity(i);
+                   finish();
 
                 }else {
                     Intent i = new Intent("android.intent.action.NOTFOUND");
