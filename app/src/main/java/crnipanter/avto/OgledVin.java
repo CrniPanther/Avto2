@@ -1,18 +1,34 @@
 package crnipanter.avto;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Tomaz on 30.12.2014.
  */
 public class OgledVin extends Activity {
+    private static final String TAG_SUCCESS = "success";
+    private static final String TAG_AVTO = "avto";
 
     private static final String TAG_VIN = "vin";
     private static final String TAG_MODEL = "model";
@@ -29,6 +45,13 @@ public class OgledVin extends Activity {
     private static final String TAG_SLABOSTI = "slabosti";
     private static final String TAG_UPKOMENTAR = "idUporabnik";
     private static final String TAG_KOMENTAR = "komentar";
+    private static final String TAG_IDOGLASA = "idOglas";
+    private static String idoglas = "";
+
+    private ProgressDialog pDialog;
+    private static final String url = "http://avto.host56.com/DodajKomentar.php";
+    JSONParser jsonParser = new JSONParser();
+    JSONArray avto = null;
     TextView Naslov;
     TextView Opis;
     TextView izpisVIN;
@@ -37,6 +60,8 @@ public class OgledVin extends Activity {
     TextView Komentarji;
     TextView Letnik;
     TextView PrikazKomentarjev;
+    Button DodajKomentar;
+    TextView NapisKomentar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +75,12 @@ public class OgledVin extends Activity {
         Komentarji = (TextView) findViewById(R.id.Komentarji);
         Letnik = (TextView) findViewById(R.id.ogledLetnik);
         PrikazKomentarjev=(TextView) findViewById(R.id.PrikazKomentarjev);
+        DodajKomentar = (Button) findViewById(R.id.DodajKomentar);
+        NapisKomentar = (TextView) findViewById(R.id.NapisKomentar);
 
         Intent i = getIntent();
 
+        idoglas=i.getStringExtra(TAG_IDOGLASA);
 
         String passedArg = i.getStringExtra(TAG_ZNAMKA);
         Naslov.setText(passedArg);
@@ -116,7 +144,59 @@ public class OgledVin extends Activity {
 
         PrikazKomentarjev.setText(Html.fromHtml(passedArg));
 
-
-
+            DodajKomentar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   if(NapisKomentar.getText().toString()!="") {
+                       new DodajKoment().execute();
+                        NapisKomentar.setText("");
+                       
+                   }
+                }
+            });
     }
+    class DodajKoment extends AsyncTask<String, String, String> {
+
+        protected void onPreExecute(){
+            super.onPreExecute();
+            pDialog = new ProgressDialog(OgledVin.this);
+            pDialog.setMessage("Dodajam Komentar...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String[] args) {
+            String id = NapisKomentar.getText().toString();
+
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("komentar", id));
+            params.add(new BasicNameValuePair("idoglasa", idoglas));
+
+            JSONObject json = jsonParser.makeHttpRequest(url,"GET",params);
+
+            Log.d("Response ", json.toString());
+
+            try{
+                int success = json.getInt(TAG_SUCCESS);
+
+                if(success == 1){
+                    pDialog.dismiss();
+
+                }else {
+
+                }
+            }catch(JSONException e){
+                e.printStackTrace();
+            }
+            return null;
+        }
+        private void onPostExecute(){
+            pDialog.dismiss();
+        }
+    }
+
+
+
 }

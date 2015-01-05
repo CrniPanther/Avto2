@@ -78,6 +78,22 @@
         android:id="@+id/PrikazKomentarjev"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.16" />
+
+    <EditText
+        android:layout_width="335dp"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/NapisKomentar"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dodaj Komentar"
+        android:id="@+id/DodajKomentar"
+        android:layout_gravity="center_horizontal" />
+
 </LinearLayout>
 
 </ScrollView>

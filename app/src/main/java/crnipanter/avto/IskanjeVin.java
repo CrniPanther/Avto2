@@ -57,6 +57,7 @@ public class IskanjeVin extends Activity {
     private static final String TAG_SLABOSTI = "slabosti";
     private static final String TAG_UPKOMENTAR = "idUporabnik";
     private static final String TAG_KOMENTAR = "komentar";
+    private static final String TAG_IDOGLASA = "idOglas";
 
 
 
@@ -123,6 +124,7 @@ public class IskanjeVin extends Activity {
                     String vpoklici = c.getString(TAG_VPOKLICI);
                     String upKomentar = c.getString(TAG_UPKOMENTAR);
                     String komentar = c.getString(TAG_KOMENTAR);
+                    String idOglas = c.getString(TAG_IDOGLASA);
 
 
                     Intent i = new Intent("android.intent.action.OGLEDVIN");
@@ -141,6 +143,7 @@ public class IskanjeVin extends Activity {
                     i.putExtra(TAG_VPOKLICI,vpoklici);
                     i.putExtra(TAG_UPKOMENTAR,upKomentar);
                     i.putExtra(TAG_KOMENTAR,komentar);
+                    i.putExtra(TAG_IDOGLASA,idOglas);
 
                    startActivity(i);
                    finish();
