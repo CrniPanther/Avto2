@@ -32,10 +32,10 @@ public class OddajaOglasa extends Activity{
     //Progress
     private ProgressDialog pDialog;
 
-  JSONParser jsonParser = new JSONParser();
+    JSONParser jsonParser = new JSONParser();
 
     //url do skripte
-private static String url = "http://avto.host56.com/insert_car_letnik.php";
+    private static String url = "http://avto.host56.com/insert_car_letnik.php";
 
     //JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -107,7 +107,7 @@ private static String url = "http://avto.host56.com/insert_car_letnik.php";
                 if(success == 1){
                     Intent i = new Intent("android.intent.action.USPESNOODDAN");
                     startActivity(i);
-                  finish();
+                    finish();
                 } else {
                     //failed to insert into table
                 }

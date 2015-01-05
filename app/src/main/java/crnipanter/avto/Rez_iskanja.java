@@ -25,7 +25,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 public class Rez_iskanja extends ListActivity {
-
+String vin;
     // Progress Dialog
     private ProgressDialog pDialog;
 
@@ -35,6 +35,7 @@ public class Rez_iskanja extends ListActivity {
     ArrayList<HashMap<String, String>> productsList;
 
     // url to get all products list
+    private static final String url = "http://avto.host56.com/vin_novo.php";
     private static String url_all_products = "http://avto.host56.com/getRezultat.php";
 
     // JSON Node names
@@ -46,6 +47,18 @@ public class Rez_iskanja extends ListActivity {
     private static final String TAG_OD = "od";
     private static final String TAG_AVTO = "avto";
     private static final String TAG_DO = "do";
+    private static final String TAG_PRENOVA = "prenova";
+    private static final String TAG_OKVARE = "okvare";
+    private static final String TAG_POMAN = "pomanjkljivosti";
+    private static final String TAG_KAROSERIJA = "karoserija";
+    private static final String TAG_NOTRANJOST = "notranjost";
+    private static final String TAG_ELEKTRONIKA = "elektronika";
+    private static final String TAG_VPOKLICI = "vpoklici";
+    private static final String TAG_PREDNOSTI = "prednosti";
+    private static final String TAG_SLABOSTI = "slabosti";
+    private static final String TAG_UPKOMENTAR = "idUporabnik";
+    private static final String TAG_KOMENTAR = "komentar";
+    private static final String TAG_IDOGLASA = "idOglas";
 
     // products JSONArray
     JSONArray products = null;
@@ -75,22 +88,99 @@ public class Rez_iskanja extends ListActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 // getting values from selected ListItem
-                String vin = ((TextView) view.findViewById(R.id.vin)).getText()
+                vin = ((TextView) view.findViewById(R.id.vin)).getText()
                         .toString();
-
+                new IsciVin().execute();
                 // Starting new intent
-                Intent in = new Intent(getApplicationContext(),
-                        OgledVin.class);
+                /*Intent in = new Intent(getApplicationContext(),
+                        IskanjeVin.IsciVin.class);
                 // sending pid to next activity
                 in.putExtra(TAG_VIN, vin);
 
                 // starting new activity and expecting some response back
-                startActivityForResult(in, 100);
+                startActivityForResult(in, 100);*/
             }
         });
 
     }
 
+    JSONParser jsonParser = new JSONParser();
+    JSONArray avto = null;
+
+    class IsciVin extends AsyncTask<String, String, String>{
+
+        protected String doInBackground(String[] args) {
+
+
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("vin", vin));
+
+            JSONObject json = jsonParser.makeHttpRequest(url,"GET",params);
+
+            Log.d("Response ", json.toString());
+
+            try{
+                int success = json.getInt(TAG_SUCCESS);
+
+                if(success == 1){
+
+                    avto = json.getJSONArray(TAG_AVTO);
+
+                    JSONObject c = avto.getJSONObject(0);
+
+
+                    String znamka = c.getString(TAG_ZNAMKA);
+                    String model = c.getString(TAG_MODEL);
+                    String vin = c.getString(TAG_VIN);
+                    String letnik = c.getString(TAG_LETNIK);
+                    String prenova = c.getString(TAG_PRENOVA);
+                    String elektronika = c.getString(TAG_ELEKTRONIKA);
+                    String okvare = c.getString(TAG_OKVARE);
+                    String pomanjkljivosti = c.getString(TAG_POMAN);
+                    String notranjost = c.getString(TAG_NOTRANJOST);
+                    String karoserija = c.getString(TAG_KAROSERIJA);
+                    String prednosti = c.getString(TAG_PREDNOSTI);
+                    String slabosti = c.getString(TAG_SLABOSTI);
+                    String vpoklici = c.getString(TAG_VPOKLICI);
+                    String upKomentar = c.getString(TAG_UPKOMENTAR);
+                    String komentar = c.getString(TAG_KOMENTAR);
+                    String idOglas = c.getString(TAG_IDOGLASA);
+
+
+                    Intent i = new Intent("android.intent.action.OGLEDVIN");
+                    i.putExtra(TAG_ZNAMKA, znamka);
+                    i.putExtra(TAG_MODEL, model);
+                    i.putExtra(TAG_VIN, vin);
+                    i.putExtra(TAG_LETNIK, letnik);
+                    i.putExtra(TAG_PRENOVA, prenova);
+                    i.putExtra(TAG_ELEKTRONIKA, elektronika);
+                    i.putExtra(TAG_OKVARE, okvare);
+                    i.putExtra(TAG_POMAN, pomanjkljivosti);
+                    i.putExtra(TAG_NOTRANJOST, notranjost);
+                    i.putExtra(TAG_KAROSERIJA,karoserija);
+                    i.putExtra(TAG_PREDNOSTI,prednosti);
+                    i.putExtra(TAG_SLABOSTI,slabosti);
+                    i.putExtra(TAG_VPOKLICI,vpoklici);
+                    i.putExtra(TAG_UPKOMENTAR,upKomentar);
+                    i.putExtra(TAG_KOMENTAR,komentar);
+                    i.putExtra(TAG_IDOGLASA,idOglas);
+
+                    startActivity(i);
+                    finish();
+
+                }else {
+                    Intent i = new Intent("android.intent.action.NOTFOUND");
+                    startActivity(i);
+                }
+            }catch(JSONException e){
+                e.printStackTrace();
+            }
+            return null;
+        }
+        private void onPostExecute(){
+            pDialog.dismiss();
+        }
+    }
 
 
 
@@ -154,6 +244,7 @@ public class Rez_iskanja extends ListActivity {
                         map.put(TAG_VIN, id);
                         map.put(TAG_ZNAMKA, name);
 
+
                         // adding HashList to ArrayList
                         productsList.add(map);
                     }
@@ -172,6 +263,8 @@ public class Rez_iskanja extends ListActivity {
 
             return null;
         }
+
+
 
         /**
          * After completing background task Dismiss the progress dialog
