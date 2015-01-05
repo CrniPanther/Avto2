@@ -112,7 +112,7 @@ public class OgledVin extends Activity {
 
         String upk =i.getStringExtra(TAG_UPKOMENTAR);
         String upkom =i.getStringExtra(TAG_KOMENTAR);
-        
+
         String up = "";
         int kjeJeOstal=0;
         if(upk.charAt(0)!='n') {
