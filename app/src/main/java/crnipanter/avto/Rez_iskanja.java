@@ -68,6 +68,7 @@ public class Rez_iskanja extends ListActivity {
 
         // on seleting single product
         // launching OgledVin
+
         lv.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
@@ -114,13 +115,14 @@ public class Rez_iskanja extends ListActivity {
 
         /**
          * getting All products from url
+         *
          * */
         protected String doInBackground(String... args) {
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             // getting JSON string from URL
-            params.add(new BasicNameValuePair("znamka", getIntent().getStringExtra(TAG_ZNAMKA)));
-            params.add(new BasicNameValuePair("model", getIntent().getStringExtra(TAG_MODEL)));
+            params.add(new BasicNameValuePair("znamka", getIntent().getStringExtra(TAG_MODEL)));
+            params.add(new BasicNameValuePair("model", getIntent().getStringExtra(TAG_ZNAMKA)));
             params.add(new BasicNameValuePair("od", getIntent().getStringExtra(TAG_OD)));
             params.add(new BasicNameValuePair("do", getIntent().getStringExtra(TAG_DO)));
             JSONObject json = jParser.makeHttpRequest(url_all_products, "GET", params);

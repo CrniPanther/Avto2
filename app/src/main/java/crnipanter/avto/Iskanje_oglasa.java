@@ -70,13 +70,13 @@ public class Iskanje_oglasa extends Activity {
 
 
   String[] items = new String[]{"Renault","Acura","Audi","Alfa Romeo","Aston Martin",
-          "BMW","Buick","Cadillac","Chevrolet","Chrysler","Datsun",
+          "BMW","Buick","Cadillac","Chevrolet","Chrysler","Citroen","Datsun",
           "Dodge","FAW","Ferrari","Fiat","Ford","GEO","GMC","Honda",
           "Hummer","Hyundai","Infiniti","Izusu","Jaguar","Jeep","Lamborghini",
           "Land Rover","Lincoln","Maserati","Mazda","Mercedes Benz","Mercury","Villager",
           "MG","Mini","Mitsubishi","Nissan","Oldsmobile","Peugeot","Plymouth","Pontiac","Porsche",
           "Rambler","Renault","Saab","Seat","Smart","Suzuki","Toyota","Volkswagen","Volvo","Austin Morris",
-          "Bentley","Bugatti","Caterham","China Motors","Citroen","Corvette","Dacia","Daewoo","Daihatsu","Kia","Lada",
+          "Bentley","Bugatti","Caterham","China Motors","Corvette","Dacia","Daewoo","Daihatsu","Kia","Lada",
           "Lancia","Lexus","Lotus","Opel","Panther","Rolls Royce","Rover","Skoda","SsangYong","Subaru","TVR","Talbot",
           "Tata","Tazzari","Trabant","Triumph","Uaz","Ueec","Vauxhall","Wartburg","Wiesmann","Zotye","Aixam","Alpina",
           "Ariel","Austin Healey","Autobianchi","Cobra","Landwind"};
@@ -87,7 +87,7 @@ public class Iskanje_oglasa extends Activity {
 
             model1 = (Spinner) findViewById(R.id.model);
 
-            items = new String[]{"Clio", "Modus"};
+            items = new String[]{"Clio", "Modus", "Berlingo"};
             adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
             model1.setAdapter(adapter);
 
