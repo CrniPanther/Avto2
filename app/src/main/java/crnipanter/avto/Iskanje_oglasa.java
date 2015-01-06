@@ -228,7 +228,7 @@ public class Iskanje_oglasa extends Activity {
     		        });
     }
 
-    //SABADIN !!
+
     class LoadAllModels extends AsyncTask<String, String, String> {
 
         protected String doInBackground(String... args) {

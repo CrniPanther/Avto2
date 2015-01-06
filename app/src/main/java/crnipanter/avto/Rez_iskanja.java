@@ -91,14 +91,7 @@ String vin;
                 vin = ((TextView) view.findViewById(R.id.vin)).getText()
                         .toString();
                 new IsciVin().execute();
-                // Starting new intent
-                /*Intent in = new Intent(getApplicationContext(),
-                        IskanjeVin.IsciVin.class);
-                // sending pid to next activity
-                in.putExtra(TAG_VIN, vin);
 
-                // starting new activity and expecting some response back
-                startActivityForResult(in, 100);*/
             }
         });
 
@@ -236,6 +229,8 @@ String vin;
                         // Storing each json item in variable
                         String id = c.getString(TAG_VIN);
                         String name = c.getString(TAG_ZNAMKA);
+                        String letnik = c.getString(TAG_LETNIK);
+                        String model = c.getString(TAG_MODEL);
 
                         // creating new HashMap
                         HashMap<String, String> map = new HashMap<String, String>();
@@ -243,6 +238,8 @@ String vin;
                         // adding each child node to HashMap key => value
                         map.put(TAG_VIN, id);
                         map.put(TAG_ZNAMKA, name);
+                        map.put(TAG_MODEL, model);
+                        map.put(TAG_LETNIK, letnik);
 
 
                         // adding HashList to ArrayList
@@ -282,8 +279,8 @@ String vin;
                     ListAdapter adapter = new SimpleAdapter(
                             Rez_iskanja.this, productsList,
                             R.layout.list_item, new String[] { TAG_VIN,
-                            TAG_ZNAMKA},
-                            new int[] { R.id.vin, R.id.name });
+                            TAG_ZNAMKA,TAG_LETNIK,TAG_MODEL},
+                            new int[] { R.id.vin, R.id.name, R.id.rezletnik, R.id.rezmodel });
                     // updating listview
                     setListAdapter(adapter);
                 }
