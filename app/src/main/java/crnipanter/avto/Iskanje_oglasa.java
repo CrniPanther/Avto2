@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,9 +49,13 @@ public class Iskanje_oglasa extends Activity {
 
     private static String url = "http://avto.host56.com/iskanje_oglasa.php";
     private static String urlZnamka = "http://avto.host56.com/getZnamka.php";
+    private static String urlModel = "http://avto.host56.com/getModel.php";
+    String isciTo = "";
+    ArrayAdapter<String> adapter;
+    String [] items,b, bb;
+    String[] models = {"-- izberite znamko --"};
 
-    String [] items,b;
-    int a;
+    int a, aa;
     JSONArray products = null;
 
 
@@ -59,7 +64,8 @@ public class Iskanje_oglasa extends Activity {
     JSONParser jParser = new JSONParser();
     ArrayList<String> znamkeList;
     boolean t=true;
-
+    boolean tt=true;
+    boolean onCreateBool = true;
 
 
 
@@ -119,8 +125,11 @@ public class Iskanje_oglasa extends Activity {
     }
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.iskanje_oglasa);
 
@@ -140,30 +149,40 @@ public class Iskanje_oglasa extends Activity {
         while(t){}
 
 
-      /* String [] items = new String[znamkeList.toArray().length];
-        items=znamkeList.toArray(items);*/
-
- /* String[] items = new String[znamkeList.size()];
-        items=znamkeList.toArray();*/ /*new String[]{"Renault","Acura","Audi","Alfa Romeo","Aston Martin",
-          "BMW","Buick","Cadillac","Chevrolet","Chrysler","Citroen","Datsun",
-          "Dodge","FAW","Ferrari","Fiat","Ford","GEO","GMC","Honda",
-          "Hummer","Hyundai","Infiniti","Izusu","Jaguar","Jeep","Lamborghini",
-          "Land Rover","Lincoln","Maserati","Mazda","Mercedes Benz","Mercury","Villager",
-          "MG","Mini","Mitsubishi","Nissan","Oldsmobile","Peugeot","Plymouth","Pontiac","Porsche",
-          "Rambler","Renault","Saab","Seat","Smart","Suzuki","Toyota","Volkswagen","Volvo","Austin Morris",
-          "Bentley","Bugatti","Caterham","China Motors","Corvette","Dacia","Daewoo","Daihatsu","Kia","Lada",
-          "Lancia","Lexus","Lotus","Opel","Panther","Rolls Royce","Rover","Skoda","SsangYong","Subaru","TVR","Talbot",
-          "Tata","Tazzari","Trabant","Triumph","Uaz","Ueec","Vauxhall","Wartburg","Wiesmann","Zotye","Aixam","Alpina",
-          "Ariel","Austin Healey","Autobianchi","Cobra","Landwind"};*/
-
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
+          adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
             znamka1.setAdapter(adapter);
+
+        znamka1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+
+               if(!onCreateBool) {
+                   isciTo = znamka1.getSelectedItem().toString();
+                   System.out.println("Isci to:" + isciTo);
+                   System.out.println("Klicem execute:" + isciTo);
+                   new LoadAllModels().execute();
+                   System.out.println("Konec execute, start while");
+                   while (tt) {
+                   }
+                   tt = true;
+                   //System.out.println("konec while");
+               } else {onCreateBool = false;}
+               // System.out.println("Zdej bom naredu adapter");
+                adapter = new ArrayAdapter<String>(Iskanje_oglasa.this, android.R.layout.simple_spinner_item, models);
+             //   System.out.println("Zdej bom spremenu modele");
+                model1.setAdapter(adapter);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }});
 
             model1 = (Spinner) findViewById(R.id.model);
 
-            items = new String[]{"Clio", "Modus", "Berlingo"};
-            adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
-            model1.setAdapter(adapter);
+
+
+
 
             letnik1 = (Spinner) findViewById(R.id.odLetnik);
 
@@ -207,6 +226,60 @@ public class Iskanje_oglasa extends Activity {
                           }
 
     		        });
+    }
+
+    //SABADIN !!
+    class LoadAllModels extends AsyncTask<String, String, String> {
+
+        protected String doInBackground(String... args) {
+            // Building Parameters
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            // getting JSON string from URL
+            params.add(new BasicNameValuePair("znamka", isciTo));
+
+            JSONObject json = jParser.makeHttpRequest(urlModel, "GET", params);
+
+            // Check your log cat for JSON reponse
+            Log.d("Vsi modeli: ", json.toString());
+
+            try {
+                // Checking for SUCCESS TAG
+                int success = json.getInt(TAG_SUCCESS);
+
+                if (success == 1) {
+                    // products found
+                    // Getting Array of Products
+                    products = json.getJSONArray(TAG_AVTO);
+                 //   System.out.println("Success je 1");
+                    models=new String[products.length()];
+                    aa=products.length();
+
+                    // looping through All Products
+                    for (int i = 0; i < products.length(); i++) {
+
+                        JSONObject c = products.getJSONObject(i);
+
+                        // Storing each json item in variable
+                        models[i] = c.getString(TAG_MODEL);
+
+
+                    }
+
+
+                } else {models = new String[1]; models[0] = "-- model ne obstaja --";}
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            tt=false;
+            return null;
+        }
+
+
+
+
+
+
+
     }
 }
 
