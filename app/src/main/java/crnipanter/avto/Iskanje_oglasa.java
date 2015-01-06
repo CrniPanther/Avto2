@@ -39,6 +39,8 @@ public class Iskanje_oglasa extends Activity {
     private static final String TAG_ZNAMKA = "znamka";
     private static final String TAG_MODEL = "model";
     private static final String TAG_AVTO = "avto";
+    private static final String TAG_OD = "od";
+    private static final String TAG_DO = "do";
     int letos = 2015;
     Button isci;
     TextView znamka,model,letnikod, letnikdo;
@@ -186,20 +188,28 @@ public class Iskanje_oglasa extends Activity {
             letnik2.setAdapter(adapter);
 
 
+        //Create button
+        isci = (Button) findViewById(R.id.IskanjeOglasaGumb);
+          isci.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                       public void onClick(View v) {
 
+                             Intent i = new Intent("android.intent.action.REZ");
+                             String text = model1.getSelectedItem().toString();
+                              String text2 = znamka1.getSelectedItem().toString();
+                             String text3 = letnik1.getSelectedItem().toString();
+                              String text4 = letnik2.getSelectedItem().toString();
+                              i.putExtra(TAG_ZNAMKA,text);
+                              i.putExtra(TAG_MODEL,text2);
+                              i.putExtra(TAG_OD,text3);
+                               i.putExtra(TAG_DO,text4);
+                               startActivity(i);
+                          }
 
-
-
+    		        });
     }
-
-
-
-
-
-
-
-
-
-
 }
+
+
+
 
