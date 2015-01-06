@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -22,7 +24,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -30,31 +34,88 @@ import java.util.List;
  */
 public class Iskanje_oglasa extends Activity {
 
-    private static final String TAG_DO = "do";
+
+    private static final String TAG_SUCCESS = "success";
     private static final String TAG_ZNAMKA = "znamka";
     private static final String TAG_MODEL = "model";
-    private static final String TAG_OD = "od";
+    private static final String TAG_AVTO = "avto";
     int letos = 2015;
     Button isci;
     TextView znamka,model,letnikod, letnikdo;
     Spinner znamka1,model1,letnik1, letnik2;
 
     private static String url = "http://avto.host56.com/iskanje_oglasa.php";
-    private static String urlZnamka = "http://avto.host56.com/getZnamka_novo.php";
+    private static String urlZnamka = "http://avto.host56.com/getZnamka.php";
 
-
+    String [] items,b;
+    int a;
     JSONArray products = null;
-    JSONParser jsonParser = new JSONParser();
 
-    // Progress Dialog
-    private ProgressDialog pDialog;
+
+
     // Creating JSON Parser object
     JSONParser jParser = new JSONParser();
-    ArrayList<HashMap<String, String>> znamkeList;
+    ArrayList<String> znamkeList;
+    boolean t=true;
 
 
 
-    static JSONArray znamke = null;
+
+    class LoadAllProducts extends AsyncTask<String, String, String> {
+
+        protected String doInBackground(String... args) {
+            // Building Parameters
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            // getting JSON string from URL
+            params.add(new BasicNameValuePair("znamka", getIntent().getStringExtra(TAG_ZNAMKA)));
+
+            JSONObject json = jParser.makeHttpRequest(urlZnamka, "GET", params);
+
+            // Check your log cat for JSON reponse
+            Log.d("All Products: ", json.toString());
+
+            try {
+                // Checking for SUCCESS TAG
+                int success = json.getInt(TAG_SUCCESS);
+
+                if (success == 1) {
+                    // products found
+                    // Getting Array of Products
+                    products = json.getJSONArray(TAG_AVTO);
+
+                    items=new String[products.length()];
+                    a=products.length();
+
+                    // looping through All Products
+                    for (int i = 0; i < products.length(); i++) {
+                        JSONObject c = products.getJSONObject(i);
+
+                        // Storing each json item in variable
+                        items[i] = c.getString(TAG_ZNAMKA);
+
+
+
+
+                        // adding HashList to ArrayList
+                        //znamkeList.add(name);
+                    }
+
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            t=false;
+            return null;
+        }
+
+
+
+
+
+
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +130,19 @@ public class Iskanje_oglasa extends Activity {
         znamka1 = (Spinner) findViewById(R.id.znamka);
 
 
-  String[] items = new String[]{"Renault","Acura","Audi","Alfa Romeo","Aston Martin",
+
+
+
+        new LoadAllProducts().execute();
+
+        while(t){}
+
+
+      /* String [] items = new String[znamkeList.toArray().length];
+        items=znamkeList.toArray(items);*/
+
+ /* String[] items = new String[znamkeList.size()];
+        items=znamkeList.toArray();*/ /*new String[]{"Renault","Acura","Audi","Alfa Romeo","Aston Martin",
           "BMW","Buick","Cadillac","Chevrolet","Chrysler","Citroen","Datsun",
           "Dodge","FAW","Ferrari","Fiat","Ford","GEO","GMC","Honda",
           "Hummer","Hyundai","Infiniti","Izusu","Jaguar","Jeep","Lamborghini",
@@ -79,10 +152,18 @@ public class Iskanje_oglasa extends Activity {
           "Bentley","Bugatti","Caterham","China Motors","Corvette","Dacia","Daewoo","Daihatsu","Kia","Lada",
           "Lancia","Lexus","Lotus","Opel","Panther","Rolls Royce","Rover","Skoda","SsangYong","Subaru","TVR","Talbot",
           "Tata","Tazzari","Trabant","Triumph","Uaz","Ueec","Vauxhall","Wartburg","Wiesmann","Zotye","Aixam","Alpina",
-          "Ariel","Austin Healey","Autobianchi","Cobra","Landwind"};
+          "Ariel","Austin Healey","Autobianchi","Cobra","Landwind"};*/
+        znamkeList=new ArrayList<String>();
+        znamkeList.size();
 
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
+
+
+        for (int i=0;i<a;i++) {
+            znamkeList.add(items[i]);
+            Log.d("All Products: ", items[i]+"--");
+        }
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, znamkeList);
             znamka1.setAdapter(adapter);
 
             model1 = (Spinner) findViewById(R.id.model);
@@ -113,28 +194,21 @@ public class Iskanje_oglasa extends Activity {
             adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, letnice);
             letnik2.setAdapter(adapter);
 
-            //Create button
-            isci = (Button) findViewById(R.id.IskanjeOglasaGumb);
 
-        isci.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent i = new Intent("android.intent.action.REZ");
-                String text = model1.getSelectedItem().toString();
-                String text2 = znamka1.getSelectedItem().toString();
-                String text3 = letnik1.getSelectedItem().toString();
-                String text4 = letnik2.getSelectedItem().toString();
-                i.putExtra(TAG_ZNAMKA,text);
-                i.putExtra(TAG_MODEL,text2);
-                i.putExtra(TAG_OD,text3);
-                i.putExtra(TAG_DO,text4);
-                startActivity(i);
-            }
-        });
-        }
 
 
 
     }
+
+
+
+
+
+
+
+
+
+
+}
 
