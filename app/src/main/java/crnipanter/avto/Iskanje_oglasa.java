@@ -153,17 +153,8 @@ public class Iskanje_oglasa extends Activity {
           "Lancia","Lexus","Lotus","Opel","Panther","Rolls Royce","Rover","Skoda","SsangYong","Subaru","TVR","Talbot",
           "Tata","Tazzari","Trabant","Triumph","Uaz","Ueec","Vauxhall","Wartburg","Wiesmann","Zotye","Aixam","Alpina",
           "Ariel","Austin Healey","Autobianchi","Cobra","Landwind"};*/
-        znamkeList=new ArrayList<String>();
-        znamkeList.size();
 
-
-
-
-        for (int i=0;i<a;i++) {
-            znamkeList.add(items[i]);
-            Log.d("All Products: ", items[i]+"--");
-        }
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, znamkeList);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
             znamka1.setAdapter(adapter);
 
             model1 = (Spinner) findViewById(R.id.model);
